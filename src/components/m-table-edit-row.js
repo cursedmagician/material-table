@@ -95,6 +95,7 @@ export default class MTableEditRow extends React.Component {
               value={readonlyValue}
               key={columnDef.tableData.id}
               rowData={this.props.data}
+              updatedData={this.state.data}
               style={getCellStyle(columnDef, value)}
             />
           );
@@ -134,6 +135,7 @@ export default class MTableEditRow extends React.Component {
                 helperText={error.helperText}
                 locale={this.props.localization.dateTimePickerLocalization}
                 rowData={this.state.data}
+                originalData={this.props.data}
                 onChange={(value) => {
                   const data = { ...this.state.data };
                   setByString(data, columnDef.field, value);
@@ -181,7 +183,7 @@ export default class MTableEditRow extends React.Component {
     };
     const isValid = this.props.columns.every((column) => {
       if (column.validate) {
-        const response = column.validate(this.state.data);
+        const response = column.validate(this.state.data, this.props.data);
         switch (typeof response) {
           case "object":
             return response.isValid;
