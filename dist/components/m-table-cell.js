@@ -192,7 +192,7 @@ var MTableCell = /*#__PURE__*/ (function (_React$Component) {
                 ? this.props.rowData
                 : this.props.updatedData
             );
-          } else if (this.props.value) {
+          } else if (this.props.value !== undefined) {
             return this.props.columnDef.render(
               this.props.value,
               "group",
