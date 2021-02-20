@@ -80,7 +80,11 @@ export default class MTableEditRow extends React.Component {
           allowEditing = true;
         }
         if (typeof columnDef.editable === "function") {
-          allowEditing = columnDef.editable(columnDef, this.props.data, this.state.data);
+          allowEditing = columnDef.editable(
+            columnDef,
+            this.props.data,
+            this.state.data
+          );
         }
         if (!columnDef.field || !allowEditing) {
           const readonlyValue = this.props.getFieldValue(
@@ -105,7 +109,10 @@ export default class MTableEditRow extends React.Component {
             editComponent || this.props.components.EditField;
           let error = { isValid: true, helperText: "" };
           if (columnDef.validate) {
-            const validateResponse = columnDef.validate(this.state.data);
+            const validateResponse = columnDef.validate(
+              this.state.data,
+              this.props.data
+            );
             switch (typeof validateResponse) {
               case "object":
                 error = { ...validateResponse };

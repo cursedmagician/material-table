@@ -119,6 +119,7 @@ export interface Action<RowData extends object> {
 
 export interface EditComponentProps<RowData extends object> {
   rowData: RowData;
+  originalData: RowData;
   value: any;
   onChange: (newValue: any) => void;
   onRowDataChange: (newValue: RowData) => void;
@@ -196,13 +197,18 @@ export interface Column<RowData extends object> {
     | "onUpdate"
     | "onAdd"
     | "never"
-    | ((columnDef: Column<RowData>, rowData: RowData) => boolean);
+    | ((
+        columnDef: Column<RowData>,
+        rowData: RowData,
+        updatedData: RowData
+      ) => boolean);
   removable?: boolean;
   resizable?: boolean;
   validate?: (
-    rowData: RowData
+    rowData: RowData,
+    originalData: RowData
   ) => { isValid: boolean; helperText?: string } | string | boolean;
-  render?: (data: RowData, type: "row" | "group") => any;
+  render?: (data: RowData, type: "row" | "group", updated: RowData) => any;
   searchable?: boolean;
   sorting?: boolean;
   title?: string | React.ReactElement<any>;

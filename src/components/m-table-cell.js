@@ -166,6 +166,7 @@ export default class MTableCell extends React.Component {
       icons,
       columnDef,
       rowData,
+      updatedData,
       errorState,
       cellEditable,
       onCellEditStarted,
@@ -222,5 +223,6 @@ MTableCell.propTypes = {
   columnDef: PropTypes.object.isRequired,
   value: PropTypes.any,
   rowData: PropTypes.object,
+  updatedData: PropTypes.object,
   errorState: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };

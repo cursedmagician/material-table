@@ -21,6 +21,7 @@ class MTableEditField extends React.Component {
     const {
       columnDef,
       rowData,
+      originalData,
       onRowDataChange,
       errorState,
       onBulkEditRowChanged,
@@ -247,6 +248,7 @@ MTableEditField.propTypes = {
   onChange: PropTypes.func.isRequired,
   columnDef: PropTypes.object.isRequired,
   locale: PropTypes.object,
+  originalData: PropTypes.object,
 };
 
 export default MTableEditField;
