@@ -111,6 +111,7 @@ var MTableEditField = /*#__PURE__*/ (function (_React$Component) {
         var _this$props = this.props,
           columnDef = _this$props.columnDef,
           rowData = _this$props.rowData,
+          originalData = _this$props.originalData,
           onRowDataChange = _this$props.onRowDataChange,
           errorState = _this$props.errorState,
           onBulkEditRowChanged = _this$props.onBulkEditRowChanged,
@@ -118,6 +119,7 @@ var MTableEditField = /*#__PURE__*/ (function (_React$Component) {
           props = (0, _objectWithoutProperties2.default)(_this$props, [
             "columnDef",
             "rowData",
+            "originalData",
             "onRowDataChange",
             "errorState",
             "onBulkEditRowChanged",
@@ -443,6 +445,7 @@ MTableEditField.propTypes = {
   onChange: _propTypes.default.func.isRequired,
   columnDef: _propTypes.default.object.isRequired,
   locale: _propTypes.default.object,
+  originalData: _propTypes.default.object,
 };
 var _default = MTableEditField;
 exports.default = _default;

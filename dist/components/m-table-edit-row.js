@@ -270,7 +270,10 @@ var MTableEditRow = /*#__PURE__*/ (function (_React$Component) {
               };
 
               if (columnDef.validate) {
-                var validateResponse = columnDef.validate(_this2.state.data);
+                var validateResponse = columnDef.validate(
+                  _this2.state.data,
+                  _this2.props.data
+                );
 
                 switch ((0, _typeof2.default)(validateResponse)) {
                   case "object":

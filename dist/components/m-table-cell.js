@@ -314,6 +314,7 @@ var MTableCell = /*#__PURE__*/ (function (_React$Component) {
           icons = _this$props.icons,
           columnDef = _this$props.columnDef,
           rowData = _this$props.rowData,
+          updatedData = _this$props.updatedData,
           errorState = _this$props.errorState,
           cellEditable = _this$props.cellEditable,
           onCellEditStarted = _this$props.onCellEditStarted,
@@ -322,6 +323,7 @@ var MTableCell = /*#__PURE__*/ (function (_React$Component) {
             "icons",
             "columnDef",
             "rowData",
+            "updatedData",
             "errorState",
             "cellEditable",
             "onCellEditStarted",
@@ -384,6 +386,7 @@ MTableCell.propTypes = {
   columnDef: _propTypes.default.object.isRequired,
   value: _propTypes.default.any,
   rowData: _propTypes.default.object,
+  updatedData: _propTypes.default.object,
   errorState: _propTypes.default.oneOfType([
     _propTypes.default.object,
     _propTypes.default.bool,
