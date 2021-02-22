@@ -60,12 +60,7 @@ export default class DataManager {
   }
 
   setColumns(columns) {
-    const undefinedWidthColumns = columns.filter((c) =>
-      c.width === undefined && c.columnDef
-        ? c.columnDef.tableData.width === undefined
-        : true && !c.hidden
-    );
-    let usedWidth = ["0px"];
+    let usedWidth = [];
 
     this.columns = columns.map((columnDef, index) => {
       columnDef.tableData = {
@@ -86,16 +81,28 @@ export default class DataManager {
         id: index,
       };
 
-      if (columnDef.tableData.width !== undefined) {
+      if (columnDef.tableData.width !== undefined && !columnDef.hidden) {
         usedWidth.push(columnDef.tableData.width);
       }
 
       return columnDef;
     });
 
+    if (usedWidth.length === 0) {
+      usedWidth.push("0px");
+    }
     usedWidth = "(" + usedWidth.join(" + ") + ")";
-    undefinedWidthColumns.forEach((columnDef) => {
-      columnDef.tableData.width = columnDef.tableData.initialWidth = `calc((100% - ${usedWidth}) / ${undefinedWidthColumns.length})`;
+
+    const proportionalWidthColumns = this.columns.filter((c) =>
+      c.columnDef
+        ? c.columnDef.tableData.width === undefined
+        : c.tableData
+        ? c.tableData.width === undefined && !c.hidden
+        : true && !c.hidden
+    );
+
+    proportionalWidthColumns.forEach((columnDef) => {
+      columnDef.tableData.width = columnDef.tableData.initialWidth = `calc((100% - ${usedWidth}) / ${proportionalWidthColumns.length})`;
     });
   }
 
