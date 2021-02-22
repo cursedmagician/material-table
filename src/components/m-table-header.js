@@ -84,9 +84,13 @@ export class MTableHeader extends React.Component {
       ...columnDef.headerStyle,
       boxSizing: "border-box",
       width,
-      maxWidth: columnDef.maxWidth,
-      minWidth: columnDef.minWidth,
     };
+    if (columnDef.maxWidth) {
+      style.maxWidth = columnDef.maxWidth;
+    }
+    if (columnDef.minWidth) {
+      style.minWidth = columnDef.minWidth;
+    }
 
     if (
       this.props.options.tableLayout === "fixed" &&
